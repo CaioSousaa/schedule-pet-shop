@@ -21,7 +21,7 @@ def client_exists(id_client: UUID) -> bool:
 
 def create_new_pet(name: str, breed: str, id_client: UUID):
     if not client_exists(id_client):
-        print(f"Erro: Cliente não foi encontrado")
+        print("Erro: Cliente não foi encontrado")
         return
 
     pet = Pet(name=name, breed=breed, id_client=id_client)
