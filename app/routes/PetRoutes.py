@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 from app.usecases.pet_usecases.CreatePetUseCase import create_new_pet
 from app.usecases.pet_usecases.GetAllPets import get_all_pets
 from app.usecases.pet_usecases.FindPetById import find_pet_by_id
+from app.usecases.pet_usecases.DeletePetUseCase import delete_pet_by_id
 from uuid import UUID
 
 router = APIRouter()
@@ -35,5 +36,13 @@ async def find_pet(id: UUID):
         if not pet:
             return {"msg": "Nenhum pet encontrado"}
         return pet
+    except Exception as e:
+        raise HTTPException(status_code=500, datail=f"Erro ao obter o pet: {str(e)}")
+
+
+@router.delete("/pets/del/{id}")
+async def delete_pet(id: UUID):
+    try:
+        delete_pet_by_id(id)
     except Exception as e:
         raise HTTPException(status_code=500, datail=f"Erro ao obter o pet: {str(e)}")
