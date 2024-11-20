@@ -3,6 +3,7 @@ from app.usecases.pet_usecases.CreatePetUseCase import create_new_pet
 from app.usecases.pet_usecases.GetAllPets import get_all_pets
 from app.usecases.pet_usecases.FindPetById import find_pet_by_id
 from app.usecases.pet_usecases.DeletePetUseCase import delete_pet_by_id
+from app.usecases.pet_usecases.UpdatePet import update_pet
 from uuid import UUID
 
 router = APIRouter()
@@ -46,3 +47,16 @@ async def delete_pet(id: UUID):
         delete_pet_by_id(id)
     except Exception as e:
         raise HTTPException(status_code=500, datail=f"Erro ao obter o pet: {str(e)}")
+
+
+@router.put("/pets/update/{id}")
+async def update(id: UUID, new_name: str, new_id_client: UUID):
+    try:
+        success = update_pet(id=id, new_name=new_name, new_id_client=new_id_client)
+
+        if success:
+            return {"message": f"Pet com ID {id} atualizado com sucesso."}
+        else:
+            raise HTTPException(status_code=404, detail=f"Pet com ID {id} não encontrado.")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Erro ao realizar a alteração no pet: {str(e)}")
