@@ -3,6 +3,7 @@ import os
 
 FILE = "csv/pet_csv.csv"
 
+
 def update_pet(id: UUID, new_name: str, new_id_client: UUID) -> bool:
     if not os.path.exists(FILE):
         print("O arquivo não existe.")
@@ -12,8 +13,8 @@ def update_pet(id: UUID, new_name: str, new_id_client: UUID) -> bool:
     updated_lines = []
 
     with open(FILE, "r") as file:
-        header = next(file)  
-        updated_lines.append(header.strip())  
+        header = next(file)
+        updated_lines.append(header.strip())
 
         for line in file:
             line = line.strip()
