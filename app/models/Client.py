@@ -1,6 +1,4 @@
 from pydantic import BaseModel
-from typing import List
-from .PetModel import Pet
 from uuid import UUID, uuid4
 
 
@@ -10,4 +8,3 @@ class User(BaseModel):
     cpf: str
     age: int
     is_admin: bool
-    pets: List[Pet]

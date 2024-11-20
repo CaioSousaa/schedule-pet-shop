@@ -57,6 +57,10 @@ async def update(id: UUID, new_name: str, new_id_client: UUID):
         if success:
             return {"message": f"Pet com ID {id} atualizado com sucesso."}
         else:
-            raise HTTPException(status_code=404, detail=f"Pet com ID {id} não encontrado.")
+            raise HTTPException(
+                status_code=404, detail=f"Pet com ID {id} não encontrado."
+            )
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Erro ao realizar a alteração no pet: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Erro ao realizar a alteração no pet: {str(e)}"
+        )
