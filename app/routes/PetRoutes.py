@@ -46,7 +46,7 @@ async def delete_pet(id: UUID):
     try:
         delete_pet_by_id(id)
     except Exception as e:
-        raise HTTPException(status_code=500, datail=f"Erro ao obter o pet: {str(e)}")
+        raise HTTPException(status_code=500, datail=f"Erro ao deletar o pet: {str(e)}")
 
 
 @router.put("/pets/update/{id}")
