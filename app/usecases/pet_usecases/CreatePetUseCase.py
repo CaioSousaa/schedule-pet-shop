@@ -20,12 +20,12 @@ def client_exists(id_client: UUID) -> bool:
                 return True
 
 
-def create_new_pet(name: str, breed: str, id_client: UUID):
+def create_new_pet(name: str, breed: str, age: int, size_in_centimeters: int, id_client: UUID):
     if not client_exists(id_client):
         print("Erro: Cliente não foi encontrado")
         return
 
-    pet = Pet(name=name, breed=breed, id_client=id_client)
+    pet = Pet(name=name, breed=breed, age=age, size_in_centimeters=size_in_centimeters, id_client=id_client)
 
     pet_json = pet.json()
 
@@ -33,12 +33,12 @@ def create_new_pet(name: str, breed: str, id_client: UUID):
         os.makedirs(os.path.dirname(FILE), exist_ok=True)
 
         with open(FILE, "w") as f:
-            f.write("id,name,breed,id_client\n")
+            f.write("id,name,breed,age,size_in_centimeters,id_client\n")
 
     with open(FILE, "a") as f:
         pet_dict = json.loads(pet_json)
         f.write(
-            f"{pet_dict['id']},{pet_dict['name']},{pet_dict['breed']},{pet_dict['id_client']}\n"
+            f"{pet_dict['id']},{pet_dict['name']},{pet_dict['breed']},{pet_dict['age']}, {pet_dict['size_in_centimeters']}, {pet_dict['id_client']}\n"
         )
 
     print("Pet criado com sucesso!")

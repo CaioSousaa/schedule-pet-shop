@@ -1,4 +1,5 @@
-id, name, breed, id_client
+id, name, breed, age, size_in_centimeters, id_client
 a39d6cd0-728b-4ee4-b2c6-caec181c1041,iguinho lindo,gato,913c790e-c27c-455f-a4df-5dcfa01c466c
 00ab0e5d-5131-4f5e-973b-d48cc626aeb7,fenix jr,arara,cd0172e6-cc5f-4b71-8d23-881507c7dad1
 eae1468f-f6d1-474c-bf55-96e919c634a9,ted,gato amarelo,6eafa3ec-664f-4403-afe6-33fd325483a7
+13f31b09-7ed8-438d-a316-d537fdef0ec5,musi,coelho,1, 24, 6eafa3ec-664f-4403-afe6-33fd325483a7
