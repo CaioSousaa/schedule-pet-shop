@@ -26,7 +26,10 @@ def create_new_services(service: Services, user_id: UUID):
             raise PermissionError("Usuário não possui permissão para criar serviços.")
 
         # Verifica se o arquivo já existe e possui dados
-        file_needs_header = not os.path.exists(file_services_csv) or os.path.getsize(file_services_csv) == 0
+        file_needs_header = (
+            not os.path.exists(file_services_csv)
+            or os.path.getsize(file_services_csv) == 0
+        )
 
         # Escreve no arquivo CSV
         with open(file_services_csv, mode="a", newline="", encoding="utf-8") as csvfile:
@@ -43,4 +46,3 @@ def create_new_services(service: Services, user_id: UUID):
     except Exception as e:
         print(f"Erro ao adicionar o serviço: {e}")
         raise
-
