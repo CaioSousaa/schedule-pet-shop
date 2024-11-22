@@ -19,10 +19,10 @@ def update_pet(id: UUID, new_name: str, new_id_client: UUID) -> bool:
         for line in file:
             line = line.strip()
             if line:
-                pet_id, name, breed, id_client = line.split(",")
+                pet_id, name, breed, age, size_in_centimeters, id_client = line.split(",")
                 if pet_id == str(id):
                     pet_found = True
-                    updated_lines.append(f"{pet_id},{new_name},{breed},{new_id_client}")
+                    updated_lines.append(f"{pet_id},{new_name},{breed},{age},{size_in_centimeters},{new_id_client}")
                 else:
                     updated_lines.append(line)
 

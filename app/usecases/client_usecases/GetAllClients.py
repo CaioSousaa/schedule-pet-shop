@@ -1,9 +1,6 @@
 import os
-from uuid import UUID
-from app.models.Pet import Pet
 
 file_client = "csv/client_csv.csv"
-
 file_pet = "csv/pet_csv.csv"
 
 
@@ -25,7 +22,9 @@ def get_all_clients_with_pets():
         for line in file:
             line = line.strip()
             if line:
-                id, name, cpf, age, is_admin = line.split(",")
+                id, name, cpf, age, is_admin = [
+                    field.strip() for field in line.split(",")
+                ]
                 clients.append(
                     {
                         "id": id,
@@ -49,30 +48,38 @@ def get_all_clients_with_pets():
         header = next(file, None)
         if header is None:
             print("O arquivo de pets está vazio ou sem cabeçalho.")
-            return clients
+            return []
 
         for line in file:
             line = line.strip()
             if line:
-                pet_data = line.split(",")
-                if len(pet_data) == 4:
-                    id, name, breed, id_client = pet_data
-                    pets.append(
-                        Pet(
-                            id=UUID(id),
-                            name=name,
-                            breed=breed,
-                            id_client=UUID(id_client),
-                        )
-                    )
+                id, name, breed, age, size_in_centimeters, id_client = [
+                    field.strip() for field in line.split(",")
+                ]
+                pets.append(
+                    {
+                        "id": id,
+                        "name": name,
+                        "breed": breed,
+                        "age": age,
+                        "size_in_centimeters": size_in_centimeters,
+                        "id_client": id_client,
+                    }
+                )
 
     # Relaciona os pets aos clientes
     for client in clients:
-        client_id = UUID(client["id"])
+        client_id = client["id"]
         client["pets"] = [
-            {"id": str(pet.id), "name": pet.name, "breed": pet.breed}
+            {
+                "id": pet["id"],
+                "name": pet["name"],
+                "breed": pet["breed"],
+                "age": pet["age"],
+                "size_in_centimeters": pet["size_in_centimeters"],
+            }
             for pet in pets
-            if pet.id_client == client_id
+            if pet["id_client"] == client_id
         ]
 
     return clients

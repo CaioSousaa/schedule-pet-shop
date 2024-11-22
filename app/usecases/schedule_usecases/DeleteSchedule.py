@@ -3,6 +3,7 @@ import os
 
 FILE = "csv/schedule_csv.csv"
 
+
 def delete_schedule(schedule_id: UUID) -> bool:
     if not os.path.exists(FILE):
         print("O arquivo não existe.")
@@ -23,7 +24,7 @@ def delete_schedule(schedule_id: UUID) -> bool:
                     schedule_found = True
                     continue
                 remaining_lines.append(line)
-    
+
     if schedule_found:
         with open(FILE, "w") as file:
             file.write("\n".join(remaining_lines) + "\n")

@@ -20,12 +20,20 @@ def client_exists(id_client: UUID) -> bool:
                 return True
 
 
-def create_new_pet(name: str, breed: str, age: int, size_in_centimeters: int, id_client: UUID):
+def create_new_pet(
+    name: str, breed: str, age: int, size_in_centimeters: int, id_client: UUID
+):
     if not client_exists(id_client):
         print("Erro: Cliente não foi encontrado")
         return
 
-    pet = Pet(name=name, breed=breed, age=age, size_in_centimeters=size_in_centimeters, id_client=id_client)
+    pet = Pet(
+        name=name,
+        breed=breed,
+        age=age,
+        size_in_centimeters=size_in_centimeters,
+        id_client=id_client,
+    )
 
     pet_json = pet.json()
 
