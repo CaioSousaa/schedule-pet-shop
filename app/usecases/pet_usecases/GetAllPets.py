@@ -21,7 +21,14 @@ def get_all_pets():
             if line:
                 id, name, breed, age, size_in_centimeters, id_client = line.split(",")
                 pets.append(
-                    {"id": id, "name": name, "breed": breed, "age": age, "size_in_centimeters": size_in_centimeters, "id_client": id_client}
+                    {
+                        "id": id,
+                        "name": name,
+                        "breed": breed,
+                        "age": age,
+                        "size_in_centimeters": size_in_centimeters,
+                        "id_client": id_client,
+                    }
                 )
 
     return pets

@@ -4,6 +4,7 @@ from app.routes.ClientRoutes import router as client_routes
 from app.routes.ScheduleRoutes import router as schedule_routes
 from app.routes.ServicesRoutes import router as services_routes
 from app.routes.ZipRoutes import router as zip_routes
+from app.routes.HashRoutes import router as hash_routes
 
 app = FastAPI()
 
@@ -17,3 +18,5 @@ app.include_router(schedule_routes, prefix="/api", tags=["Schedules"])
 app.include_router(services_routes, prefix="/api", tags=["Services"])
 
 app.include_router(zip_routes, prefix="/api", tags=["Zip"])
+
+app.include_router(hash_routes, prefix="/api", tags=["Hash"])
