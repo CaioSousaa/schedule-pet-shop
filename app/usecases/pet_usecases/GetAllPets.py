@@ -19,9 +19,9 @@ def get_all_pets():
         for line in file:
             line = line.strip()
             if line:
-                id, name, breed, id_client = line.split(",")
+                id, name, breed, age, size_in_centimeters, id_client = line.split(",")
                 pets.append(
-                    {"id": id, "name": name, "breed": breed, "id_client": id_client}
+                    {"id": id, "name": name, "breed": breed, "age": age, "size_in_centimeters": size_in_centimeters, "id_client": id_client}
                 )
 
     return pets

@@ -8,6 +8,7 @@ SCHEDULE_FILE = "csv/schedule_csv.csv"
 CLIENT_FILE = "csv/client_csv.csv"
 SERVICE_FILE = "csv/services_csv.csv"
 
+
 def client_exists(id_client: UUID) -> bool:
     if not os.path.exists(CLIENT_FILE):
         return False
@@ -20,6 +21,7 @@ def client_exists(id_client: UUID) -> bool:
             if client_id == str(id_client):
                 return True
     return False
+
 
 def services_exixts(service_id: int) -> bool:
     if not os.path.exists(SERVICE_FILE):
@@ -34,6 +36,7 @@ def services_exixts(service_id: int) -> bool:
                 return True
     return False
 
+
 def create_schedule(service_id: int, client_id: UUID, date_schedule: date):
     if not client_exists(client_id):
         raise ValueError("Cliente não encontrado")
@@ -41,7 +44,9 @@ def create_schedule(service_id: int, client_id: UUID, date_schedule: date):
     if not services_exixts(service_id):
         raise ValueError("Serviço não encontrado")
 
-    schedule = Schedule(id_client=client_id, id_service=service_id, date_schedule=date_schedule)
+    schedule = Schedule(
+        id_client=client_id, id_service=service_id, date_schedule=date_schedule
+    )
 
     schedule_json = schedule.json()
 
