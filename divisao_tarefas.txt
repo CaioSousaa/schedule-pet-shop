@@ -1,0 +1,21 @@
+ANDRE
+    -model Client, Service
+    -CRUD Client 
+    -Create e Delete - Pet
+    -CountEntities e HashSha256 
+    -ClientRoutes
+    -HashRoutes
+    -CountEntitiesRoute
+    -Create e delete route - Pet
+    -main
+CAIO
+    -model Pet, Schedule
+    -usecases Services, Schedules
+    -GetAll, FindPetById e UpdatePet - Pet
+    -ZipFilePetCsv
+    -ScheduleRoutes
+    -ServiceRoutes
+    -GetAll, FindPetById e UpdatePet routes - Pet
+    -arquivos csv
+    -main
+
